@@ -2,7 +2,11 @@
 .DEFAULT_GOAL := help
 PY ?= python3
 VENV ?= .venv
+ifeq ($(OS),Windows_NT)
+BIN := $(VENV)/Scripts
+else
 BIN := $(VENV)/bin
+endif
 
 .PHONY: help setup setup-cpu smoke nb1 nb2 nb3 nb4 nb5 nb6 pipeline pipeline-full test verify colab data clean
 
